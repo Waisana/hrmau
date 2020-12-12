@@ -56,7 +56,9 @@ class CorporateController extends Controller
             'physicalAddress' => 'required',
             'contactPerson' => 'required',
             'title' => 'required',
-            'sector' => 'required'
+            'sector' => 'required',
+            'noOfstaff' => 'required',
+            'interest' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -138,7 +140,9 @@ class CorporateController extends Controller
             'physicalAddress' => 'required',
             'contactPerson' => 'required',
             'title' => 'required',
-            'sector' => 'required'
+            'sector' => 'required',
+            'noOfstaff' => 'required',
+            'interest' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -160,6 +164,8 @@ class CorporateController extends Controller
         $corporate->contactPerson = $input['contactPerson'];
         $corporate->title = $input['title'];
         $corporate->sector = $input['sector'];
+        $corporate->noOfstaff = $input['noOfstaff'];
+        $corporate->interest = $input['interest'];
         $corporate->save();
 
         // return response

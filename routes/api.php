@@ -63,11 +63,11 @@ Route::get('/onemembertype/{id}','Api\MembertypeController@show');
 Route::put('/updatemembertype/{id}','Api\MembertypeController@update');
 Route::delete('/destroymembertype/{id}','Api\MembertypeController@destroy');
 //Knowledgehub
-Route::post('/knowledgehub','Api\MembertypeController@store');
-Route::get('/allknowledgehub','Api\MembertypeController@index');
-Route::get('/oneknowledgehub/{id}','Api\MembertypeController@show');
-Route::put('/updateknowledgehub/{id}','Api\MembertypeController@update');
-Route::delete('/destroyknowledgehub/{id}','Api\MembertypeController@destroy');
+Route::post('/knowledgehub','Api\KnowledgehubController@store');
+Route::get('/allknowledgehub','Api\KnowledgehubController@index');
+Route::get('/oneknowledgehub/{id}','Api\KnowledgehubController@show');
+Route::put('/updateknowledgehub/{id}','Api\KnowledgehubController@update');
+Route::delete('/destroyknowledgehub/{id}','Api\KnowledgehubController@destroy');
 //Event
 Route::post('/event','Api\EventController@store');
 Route::get('/allevent','Api\EventController@index');
