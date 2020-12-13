@@ -20,7 +20,7 @@ class CreateStudentsTable extends Migration
             $table->string('sex');
             $table->string('institutionName');
             $table->string('qualification');
-            $table->string('target');
+            $table->text('target');
             $table->string('dob');
             $table->string('nationality');
             $table->string('telephone');

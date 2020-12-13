@@ -23,7 +23,7 @@ class CreateCorporatesTable extends Migration
             $table->string('physicalAddress');
             $table->string('contactPerson');
             $table->string('title');
-            $table->string('sector');
+            $table->text('sector');
             $table->string('noOfstaff');
             $table->string('interest');
             $table->timestamps();

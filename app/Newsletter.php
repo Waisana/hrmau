@@ -11,6 +11,7 @@ class Newsletter extends Model
         'newsTitle',
         'newsCategory',
         'newsDesc',
+        'image'
         
     ];
 }

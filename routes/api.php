@@ -74,3 +74,15 @@ Route::get('/allevent','Api\EventController@index');
 Route::get('/oneevent/{id}','Api\EventController@show');
 Route::put('/updateevent/{id}','Api\EventController@update');
 Route::delete('/destroyevent/{id}','Api\EventController@destroy');
+//Leadership
+Route::post('/leadership','Api\LeadershipController@store');
+Route::get('/allleadership','Api\LeadershipController@index');
+Route::get('/oneleadership/{id}','Api\LeadershipController@show');
+Route::put('/updateleadership/{id}','Api\LeadershipController@update');
+Route::delete('/destroyleadership/{id}','Api\LeadershipController@destroy');
+//Staff
+Route::post('/staff','Api\StaffController@store');
+Route::get('/allstaff','Api\StaffController@index');
+Route::get('/onestaff/{id}','Api\StaffController@show');
+Route::put('/updatestaff/{id}','Api\StaffController@update');
+Route::delete('/destroystaff/{id}','Api\StaffController@destroy');

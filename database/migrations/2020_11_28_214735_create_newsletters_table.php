@@ -17,7 +17,8 @@ class CreateNewslettersTable extends Migration
             $table->id();
             $table->string('newsTitle');
             $table->string('newsCategory');
-            $table->string('newsDesc');
+            $table->text('newsDesc');
+            $table->text('image');
             $table->timestamps();
         });
     }

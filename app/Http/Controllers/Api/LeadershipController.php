@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Auth;
-use App\Newsletter;
-use Illuminate\Http\Request;
+use App\Leadership;
 
-class NewsletterController extends Controller
+class LeadershipController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +17,11 @@ class NewsletterController extends Controller
      */
     public function index()
     {
-        $newsletter = Newsletter::all();
+        $leadership = Leadership::all();
         
         return response()->json([
             'success' => true,
-            'data' => $newsletter
+            'data' => $leadership
         ]);
     }
 
@@ -46,11 +46,11 @@ class NewsletterController extends Controller
         $input = $request->all();
 
         $validator = Validator::make($input, [
-
-            'newsTitle' => 'required',
-            'newsCategory' => 'required',
-            'newsDesc' => 'required',
-            'image'=>'required'
+            
+            'name' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            
             
         ]);
 
@@ -63,12 +63,12 @@ class NewsletterController extends Controller
             return response()->json($response, 404);
         }
 
-        $newsletter = Newsletter::create($input);
+        $leadership = Leadership::create($input);
 
         // return response
         $response = [
             'success' => true,
-            'message' => 'News successfully created!',
+            'message' => 'leader successfully created!',
         ];
         return response()->json($response, 200);
     }
@@ -81,13 +81,13 @@ class NewsletterController extends Controller
      */
     public function show($id)
     {
-        $newsletter = Newsletter::find($id);
+        $leadership = Leadership::find($id);
 
-        if (is_null($newsletter)) {
+        if (is_null($leadership)) {
             // return response
             $response = [
                 'success' => false,
-                'message' => 'News not found.',
+                'message' => 'Leader not found.',
             ];
             return response()->json($response, 404);
         }
@@ -95,7 +95,7 @@ class NewsletterController extends Controller
         // return response
         $response = [
             'success' => true,
-            'message' => 'News retrieved successfully.',
+            'message' => 'Leader retrieved successfully.',
         ];
         return response()->json($response, 200);
     }
@@ -118,15 +118,15 @@ class NewsletterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Newsletter $newsletter)
+    public function update(Request $request, Leadership $leadership)
     {
         $input = $request->all();
 
         $validator = Validator::make($input, [
-            'newsTitle' => 'required',
-            'newsCategory' => 'required',
-            'newsDesc' => 'required',
-            'image'=>'required'
+
+            'name' => 'required',
+            'title' => 'required',
+            'description' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -138,16 +138,14 @@ class NewsletterController extends Controller
             return response()->json($response, 404);
         }
 
-        $newsletter->newsTitle = $input['newsTitle'];
-        $newsletter->newsCategory = $input['newsCategory'];
-        $newsletter->newsDesc = $input['newsDesc'];
-        $newsletter->image = $input['image'];
-        $newsletter->save();
-
+        $leadership->name = $input['name'];
+        $leadership->title = $input['title'];
+        $leadership->description = $input['description'];
+        $leadership->save();
         // return response
         $response = [
             'success' => true,
-            'message' => 'News updated successfully.',
+            'message' => 'Leader updated successfully.',
         ];
         return response()->json($response, 200);
     }
@@ -158,14 +156,14 @@ class NewsletterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Newsletter $newsletter)
+    public function destroy(Leadership $leadership)
     {
-        $newsletter->delete();
+        $event->delete();
 
         // return response
         $response = [
             'success' => true,
-            'message' => 'News deleted successfully.',
+            'message' => 'Leader deleted successfully.',
         ];
         return response()->json($response, 200);
        

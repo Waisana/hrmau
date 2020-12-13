@@ -16,7 +16,7 @@ class CreateKnowledgehubsTable extends Migration
         Schema::create('knowledgehubs', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->string('document');
             $table->timestamps();
         });
