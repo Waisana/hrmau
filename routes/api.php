@@ -86,3 +86,9 @@ Route::get('/allstaff','Api\StaffController@index');
 Route::get('/onestaff/{id}','Api\StaffController@show');
 Route::put('/updatestaff/{id}','Api\StaffController@update');
 Route::delete('/destroystaff/{id}','Api\StaffController@destroy');
+//Home
+Route::post('/home','Api\HomeController@store');
+Route::get('/allhome','Api\HomeController@index');
+Route::get('/onehome/{id}','Api\HomeController@show');
+Route::put('/updatehome/{id}','Api\HomeController@update');
+Route::delete('/destroyhome/{id}','Api\HomeController@destroy');
