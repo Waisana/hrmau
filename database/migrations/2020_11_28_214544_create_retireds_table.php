@@ -28,9 +28,9 @@ class CreateRetiredsTable extends Migration
             $table->string('interest');
             $table->string('qualification');
             $table->string('experience');
-            
-            
-            
+            $table->string('approve');
+            $table->string('dapproved');
+            $table->string('doApp');
             $table->timestamps();
         });
     }

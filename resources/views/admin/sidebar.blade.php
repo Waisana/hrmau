@@ -22,11 +22,11 @@
                                     <span class="none">Applications <i class="fa fa-angle-down pull-right align-bottom"></i></span>
                                 </a>
                                 <ul class="children" id="editors">
-                                    <li class="child"><a href="#" class="ml-4"><i class="fa fa-angle-right mr-2"></i> General</a></li>
-                                    <li class="child"><a href="#" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Professional</a></li>
-                                    <li class="child"><a href="#" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Cooperate</a></li>
-                                    <li class="child"><a href="#" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Student</a></li>
-                                    <li class="child"><a href="#" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Retired</a></li>
+                                    <li class="child"><a href="/general" class="ml-4"><i class="fa fa-angle-right mr-2"></i> General</a></li>
+                                    <li class="child"><a href="/professional" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Professional</a></li>
+                                    <li class="child"><a href="/cooperates" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Cooperate</a></li>
+                                    <li class="child"><a href="/students" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Student</a></li>
+                                    <li class="child"><a href="/retired" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Retired</a></li>
                                 </ul>
                             </li>
                             <li class="parent">

@@ -26,6 +26,9 @@ class CreateStudentsTable extends Migration
             $table->string('telephone');
             $table->string('fax')->nullable();
             $table->string('email',191)->unique();
+            $table->string('approve');
+            $table->string('dapproved');
+            $table->string('doApp');
             $table->timestamps();
         });
     }

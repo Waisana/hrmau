@@ -26,6 +26,9 @@ class CreateCorporatesTable extends Migration
             $table->text('sector');
             $table->string('noOfstaff');
             $table->string('interest');
+            $table->string('approve');
+            $table->string('dapproved');
+            $table->string('doApp');
             $table->timestamps();
         });
     }

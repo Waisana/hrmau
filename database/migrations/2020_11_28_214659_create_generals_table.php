@@ -27,6 +27,9 @@ class CreateGeneralsTable extends Migration
             $table->string('email',191)->unique();
             $table->string('interest');
             $table->string('experience');
+            $table->string('approve');
+            $table->string('dapproved');
+            $table->string('doApp');
             $table->timestamps();
         });
     }

@@ -19,17 +19,36 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{asset('css/dataTables.min.css')}}">
     <!--Chartist CSS-->
     <link rel="stylesheet" href={{asset('css/chartist.min.css')}}>
     <!--Morris Css-->
     <link rel="stylesheet" href={{asset('css/morris.css')}}>
 
-    {{-- font awesome --}}
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/fontawesome.css') }}"> --}}
-
     {{-- scripts --}}
     <script src="{{asset('js/app.js')}}"></script>
     <script src="{{asset('js/style.js')}}"></script>
+    <script src="{{asset('js/select2.min.js')}}"></script>
+    <script src="{{asset('js/dataTables.min.js')}}"></script>
+    {{-- <script src="{{asset('js/datepicker.min.js')}}"></script> --}}
+    <script src="{{asset('js/sweetalert.js')}}"></script>
+    <!--Chartist JS-->
+    <script src="{{asset('js/charts/chartist.min.js')}}"></script>
+    <script src={{asset('js/charts/chartist-data.js')}}></script>
+    <script src={{asset('js/charts/demo.js')}}></script>
+
+    <!--Flot.JS-->
+    <script src={{asset('js/charts/jquery.flot.min.js')}}></script>
+    <script src={{asset('js/charts/jquery.flot.pie.min.js')}}></script>
+    <script src={{asset('js/charts/jquery.flot.categories.min.js')}}></script>
+    <script src={{asset('js/charts/jquery.flot.stack.min.js')}}></script>
+    <!--Sparkline-->
+    <script src={{asset('js/charts/sparkline.min.js')}}></script>
+    <!--Morris.JS-->
+    <script src={{asset('js/charts/raphael.min.js')}}></script>
+    <script src={{asset('js/charts/morris.js')}}></script>
+    <!--Chart JS-->
+    <script src={{asset('js/charts/chart.min.js')}}></script>
     
     
       

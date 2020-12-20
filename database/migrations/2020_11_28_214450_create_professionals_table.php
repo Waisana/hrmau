@@ -31,6 +31,9 @@ class CreateProfessionalsTable extends Migration
             $table->string('jobTitle');
             $table->string('employerEmail',191)->unique();
             $table->string('employerLocation');
+            $table->string('approve');
+            $table->string('dapproved');
+            $table->string('doApp');
             $table->timestamps();
         });
     }
