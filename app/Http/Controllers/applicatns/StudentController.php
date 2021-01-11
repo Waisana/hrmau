@@ -4,6 +4,7 @@ namespace App\Http\Controllers\applicatns;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Student;
 
 class StudentController extends Controller
 {
@@ -14,7 +15,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('admin.student');
+        $student = Student::all();
+        return view('admin.applicants.student')->with('student',$student);
     }
 
     /**

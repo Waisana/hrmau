@@ -17,7 +17,7 @@ class CooperateController extends Controller
     {
         //
         $cooperate = Corporate::all();
-        return view('admin.cooperate', compact('cooperate'));
+        return view('admin.applicants.cooperate', compact('cooperate'));
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\applicatns;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\General;
 
 class GeneralController extends Controller
 {
@@ -13,7 +14,9 @@ class GeneralController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {return view('admin.general');
+    {
+        $general= General::all();
+        return view('admin.applicants.general')->with('general',$general);
     }
 
     /**

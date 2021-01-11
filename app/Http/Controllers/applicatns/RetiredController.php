@@ -4,6 +4,7 @@ namespace App\Http\Controllers\applicatns;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Retired;
 
 class RetiredController extends Controller
 {
@@ -15,7 +16,8 @@ class RetiredController extends Controller
     public function index()
     {
         //
-        return view('admin.retired');
+        $retired = Retired::all();
+        return view('admin.applicants.retired')->with('retired',$retired);
     }
 
     /**

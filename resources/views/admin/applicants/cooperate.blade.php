@@ -10,12 +10,12 @@
             <table class="table table-striped" id="project_table">
                 <thead>
                     <tr>
-                        <th>Organisation Name</th>
+                        <th>Org Name</th>
                         <th>Title</th>
-                        <th>Number of staff</th>
-                        <th>Area of Interest</th>
-                        <th>Application date</th>
-                        <th>Approved date</th>
+                        <th>Staff Total</th>
+                        <th>Interest</th>
+                        <th>Date Applied</th>
+                        <th>Date Approved</th>
                         <th>Status</th>
                         <th>Details </th>
                     </tr>

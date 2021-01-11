@@ -4,6 +4,7 @@ namespace App\Http\Controllers\applicatns;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Professional;
 
 class ProfessionalController extends Controller
 {
@@ -15,7 +16,8 @@ class ProfessionalController extends Controller
     public function index()
     {
         //
-        return view('admin.professional');
+        $proffessionals = Professional::all();
+        return view('admin.applicants.professional')->with('proffessionals', $proffessionals);
     }
 
     /**
