@@ -17,9 +17,16 @@
     <!-- Custom CSS Files -->
     <link rel="stylesheet" href="{{asset('css/quicksand.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <!--Font Awesome-->
+    {{-- <link rel="stylesheet" href="{{asset('css/fontawesome-all.min.css')}}"> --}}
+    {{-- <link rel="stylesheet" href="{{asset('css/fontawesome.css')}}"> --}}
+    <!--Bootstrap Calender-->
+    <link rel="stylesheet" href="{{asset('js/calendar/bootstrap_calendar.css')}}">
+
     <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/nice-select.css')}}">
-    <link rel="stylesheet" href="{{asset('css/dataTables.min.css')}}">
+    <!--Datatable-->
+    <link rel="stylesheet" href="{{asset('css/dataTables.bootstrap4.min.css')}}">
     <!--Chartist CSS-->
     <link rel="stylesheet" href={{asset('css/chartist.min.css')}}>
     <!--Morris Css-->
@@ -49,11 +56,18 @@
     <script src={{asset('js/charts/morris.js')}}></script>
     <!--Chart JS-->
     <script src={{asset('js/charts/chart.min.js')}}></script>
-    
-    
-      
-
-
+     <!--Datatable-->
+    <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('js/dataTables.bootstrap4.min.js')}}"></script>
+    <!-- Page JavaScript Files-->
+    <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script src="{{asset('js/jquery-1.12.4.min.js')}}"></script>
+    <!--Popper JS-->
+    <script src="{{asset('js/popper.min.js')}}"></script>
+    <!--Canvas JS-->
+    <script src="{{asset('js/charts/canvas.min.js')}}"></script>
+    <!--Bootstrap-->
+    {{-- <script src="assets/js/bootstrap.min.js"></script> --}}
     <style>
         body{
             background-color: #EFF0F1;
@@ -70,6 +84,9 @@
             </div>
         </div>
     </div>
+    <script>
+        $('#theDataTable').DataTable();
+    </script>
 </body>
 
 </html>

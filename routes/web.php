@@ -21,6 +21,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 /*
+User
+*/
+Route::get('/users', 'User\UserController@index');
+Route::post('/postUser', 'User\UserController@store');
+Route::get('/edituser/{id}/edit', 'User\UserController@edit');
+Route::get('/userprofile', 'User\UserController@userprofile');
+Route::post('/updateprofile', 'User\UserController@updateprofile');
+Route::post('/update-password', 'User\UserController@updatepassword');
+/*
 General
 */
 Route::get('/general', 'applicatns\GeneralController@index');
@@ -40,3 +49,20 @@ Route::get('/students', 'applicatns\StudentController@index');
 Retired
 */
 Route::get('/retired', 'applicatns\RetiredController@index');
+/*
+MemberType
+*/
+Route::get('/memberType', 'others\MemberTypeController@index');
+Route::post('/post-membertype', 'others\MemberTypeController@store');
+/*
+Knowledge Hub
+*/
+Route::get('/knowHub', 'others\KnowHubController@index');
+Route::post('/post-knowHub', 'others\KnowHubController@store');
+/*
+News,Events and updates
+*/
+Route::get('/news', 'others\NewsUpdateController@newsupdates');
+Route::post('/post-news', 'others\NewsUpdateController@storeNews');
+Route::get('/events', 'others\NewsUpdateController@events');
+Route::get('/leadership', 'others\NewsUpdateController@leadership');

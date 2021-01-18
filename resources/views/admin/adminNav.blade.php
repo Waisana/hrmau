@@ -75,9 +75,7 @@
                         <img src="{{asset('admin/img/profile.jpg')}}" alt="profile" class="rounded-circle" width="40px" height="40px">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right mt-13" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="/usersprofile"><i class="fa fa-user pr-2"></i> Profile</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/changePassword"><i class="fas fa-lock pr-2"></i>  changePassword</a>
+                        <a class="dropdown-item" href="/userprofile"><i class="fa fa-user pr-2"></i> Account</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
