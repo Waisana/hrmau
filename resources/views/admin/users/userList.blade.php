@@ -40,11 +40,60 @@
                                     <p>{{$item->lname}}</p>
                                 </td>
                                 <td class="align-middle">{{$item->email}}</td>
-                                <td class="align-middle text-center">
-                                    <a href ="#"  class="btn text-theme p-1" data-toggle="modal" data-target='#userUpdate' id="edit" data-id="{{ $item->id }}"><i class="fas fa-edit"></i></i></a>
-                                    <button class="btn btn-link text-danger p-1"><i class="fas fa-trash"></i></button>
+                                <td class="align-middle">
+                                    <a href="#"  class="btn text-theme p-1 " data-toggle="modal" data-target='#userUpdate{{ $item->id }}'><i class="fas fa-edit"></i></a>
+                                    <a href="/delete-user/{{ $item->id }}" class="btn btn-link text-danger p-1 "><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
+                            <div class="modal fade" id="userUpdate{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">User Update</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form class="form-horizontal mt-4 mb-5" method="POST" action="/edituser/{{ $item->id }}" enctype="multipart/form-data" id="editform">
+                                            @csrf
+                                            {{ method_field('PUT') }}
+                                            <div class="modal-body">
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-2" for="fname">First Name</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" name="fname" id="fname" value="{{$item->fname}}" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-2" for="lname">Last Name</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" name="lname" id="lname" value="{{$item->lname}}" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-2" for="email">Email</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" name="email" id="email" value="{{$item->email}}" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-2" for="exampleFormControlFile1">File input</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="file" class="form-control" id="exampleFormControlFile1">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Save</button>
+                                            </div>
+                                        </form> 
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                           
                         @endforeach       
                     @endif
                 </tbody>
@@ -98,52 +147,8 @@
         </div>
     </div>
     <!--User updating-->
-    <div class="modal fade" id="userUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">User Update</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form class="form-horizontal mt-4 mb-5" method="POST" action="/edituser" enctype="multipart/form-data" id="editform">
-                    @csrf
-                    {{ method_field('PUT') }}
-                    <div class="modal-body">
-                        <div class="form-group row">
-                            <label class="control-label col-sm-2" for="fname">First Name</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="fname" id="fname" value="{{$item->fname}}" />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="control-label col-sm-2" for="lname">Last Name</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="lname" id="lname" value="{{$item->lname}}" />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="control-label col-sm-2" for="email">Email</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="email" id="email" value="{{$item->email}}" />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="control-label col-sm-2" for="exampleFormControlFile1">File input</label>
-                            <div class="col-sm-10">
-                                <input type="file" class="form-control" id="exampleFormControlFile1">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" data-dismiss="modal">Save</button>
-                    </div>
-                </form> 
-                
-            </div>
-        </div>
-    </div>
+    
+    
 </div>
 @endsection
+

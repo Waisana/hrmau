@@ -33,11 +33,41 @@
                             <td class="align-middle">{{$item->id}}</td>
                             <td class="align-middle">{{$item->typeName}}</td>
                             <td class="align-middle text-center">
-                                <a href ="#"  class="btn text-theme p-1 edit"><i class="fas fa-edit"></i></i></a>
-                                <button class="btn btn-link text-danger p-1"><i class="fas fa-trash"></i></button>
+                                <a href="#"  class="btn text-theme p-1 " data-toggle="modal" data-target='#memberUpdate{{ $item->id }}'><i class="fas fa-edit"></i></a>
+                                <a href="/delete-type/{{ $item->id }}" class="btn btn-link text-danger p-1"><i class="fas fa-trash"></i></a>
                             </td>
                             
                         </tr>
+                        <div class="modal fade" id="memberUpdate{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Update Member Type</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form class="form-horizontal mt-4 mb-5" method="POST" action="/edit-member-Type/{{ $item->id }}" enctype="multipart/form-data" id="editform">
+                                        @csrf
+                                        {{ method_field('PUT') }}
+                                        <div class="modal-body">
+                                            <div class="form-group row">
+                                                <label class="control-label col-sm-2" for="typeName">Type Name</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="typeName"  value="{{$item->typeName}}" />
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                        </div>
+                                    </form> 
+                                    
+                                </div>
+                            </div>
+                        </div>
                         @endforeach
                     @endif()
                    

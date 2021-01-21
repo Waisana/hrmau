@@ -34,8 +34,14 @@ class UserController extends Controller
         $user ->fname=$request->input('fname');
         $user ->lname=$request->input('lname');
         $user ->email=$request->input('email');
+        if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = $image->getClientOriginalName();
+            $image->move(public_path('uploads/user'), $filename);
+            $user->image = $request->file('image')->getClientOriginalName();
+        }
         $user ->update();
-        return back()->with('success','Accouint Updated!');
+        return redirect('/userprofile')->with('success','Accouint Updated!');
 
     }
     public function updatepassword(Request $request)
@@ -114,7 +120,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($user_id);
+        return response()->json($user_id);
     }
 
     /**
@@ -123,13 +130,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
         $user = User::find($id);
-
-	    return response()->json([
-	      'data' => $user
-	    ]);
+        $user ->fname=$request->input('fname');
+        $user ->lname=$request->input('lname');
+        $user ->email=$request->input('email');
+        $user ->update();
+        return redirect('/users')->with('success','User updated');
     }
 
     /**
@@ -152,6 +160,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/users')->with('success','Account delete! ');
     }
 }

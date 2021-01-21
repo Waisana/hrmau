@@ -33,8 +33,8 @@
     <link rel="stylesheet" href={{asset('css/morris.css')}}>
 
     {{-- scripts --}}
-    <script src="{{asset('js/app.js')}}"></script>
     <script src="{{asset('js/style.js')}}"></script>
+    <script src="{{asset('js/app.js')}}"></script>
     <script src="{{asset('js/select2.min.js')}}"></script>
     <script src="{{asset('js/dataTables.min.js')}}"></script>
     {{-- <script src="{{asset('js/datepicker.min.js')}}"></script> --}}
@@ -78,7 +78,7 @@
     <div class="container-fluid">
         @include('admin.adminNav')
         <div class="row main-content">
-            @include('admin.sideBar')
+            @include('admin.sidebar')
             <div class="col-sm-9 col-xs-12 content pt-3 pl-0">
                 @yield('content')
             </div>

@@ -22,40 +22,7 @@ $(document).ready(function() {
         modal.find('.modal-body input').val(recipient)
     });
     /*============Dynamic modal content ============*/
-    $('body').on('click', '#edit', function (event) {
-
-        event.preventDefault();
-        var id = $(this).data('id');
-        console.log(id)
-        $.get('edituser/' + id + '/edit', function (data) {
-             $('#userCrudModal').html("Edit category");
-             $('#submit').val("Edit category");
-             $('#practice_modal').modal('show');
-             $('#color_id').val(data.data.id);
-             $('#name').val(data.data.name);
-         })
-    });
-    /*==========Edit User========================*/
-    
-    var table = $('#theDataTable').DataTable();
-    table.on('click','.edit', function() {
-        $tr =$(this).closest('tr');
-        if($($tr).hasClass('child')){
-            $tr = $tr.prev('.parent');
-
-            var data = table.row($tr).data();
-            console.log(data);
-
-            $('#fname').val(data[1]);
-            $('#lname').val(data[2]);
-            $('#email').val(data[3]);
-
-            $('#editform').attr('action', '/edituser'+data[0]);
-            $('#userUpdate').modal('show');
-        }
-       
-    });
-     /*==========Edit User========================*/
+   
 
     //Tooltips
     $('[data-toggle="tooltip"]').tooltip();

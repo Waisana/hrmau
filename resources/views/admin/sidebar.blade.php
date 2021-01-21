@@ -3,9 +3,9 @@
                 <div class="inner-sidebar mr-3">
                     <!--Image Avatar-->
                     <div class="avatar text-center">
-                        <img src="{{asset('admin/img/profile.jpg')}}" alt="" class="rounded-circle" />
-                        <p><strong>Brian Autinove</strong></p>
-                        <span class="text-primary small"><strong>UI/UX Designer</strong></span>
+                        <img src="{{ asset('uploads/user/'.Auth::User()->image)}}" alt="image" class="rounded-circle " >
+                        <p><strong>{{Auth::User()->fname." ".Auth::User()->lname}}</strong></p>
+                        <span class="text-primary small"><strong>Admin</strong></span>
                     </div>
                     <!--Image Avatar-->
                     <!--Sidebar Navigation Menu-->

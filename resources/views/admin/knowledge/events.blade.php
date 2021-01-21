@@ -1,21 +1,33 @@
 @extends('layouts.master')
 @section('content')
+@if(Session::has('success'))
+        <div class="alert alert-success text-center" role="alert">
+            {{Session::get('success')}}
+        </div>
+    @endif
 <div class="row mt-3">
     <div class="col-sm-12">
         <!--Striped table-->
         <div class="mt-1 mb-3 p-3 button-container bg-white border shadow-sm">
-            <h6 class="mb-2">Events</h6>
-            <code class="mb-2">Event setup</code>
-            
+            <div class="row border-bottom mb-4">
+                <div class="col-sm-8 pt-2">
+                    <h6 class="mb-2">Events</h6>
+                    <code class="mb-2">Event setup</code>
+                </div>
+                <div class="col-sm-4 text-right pb-3">
+                    <button class="btn btn-round btn-theme" data-toggle="modal" data-target="#eventAdd"><i class="fa fa-plus"></i> Add News</button>
+                </div>
+            </div>
             <table class="table table-striped" id="project_table">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Title</th>
                         <th>Description</th>
+                        <th>Venue</th>
                         <th>Start Date</th>
                         <th>End Date</th>
-                        <th>Venue</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,18 +35,134 @@
                         @foreach ($event as $item)
                             <tr>
                                 <td>{{$item->id}}</td>
-                                <td>{{$item->eventName}}</td>
-                                <td>{{$item->eventDesc}}</td>
-                                <td>{{$item->startdate}}</td>
-                                <td>{{$item->endate}}</td>
-                                <td>{{$item->venue}}</td>
+                                <td class="align-middle">{{$item->eventName}}</td>
+                                <td class="align-middle">{{$item->eventDesc}}</td>
+                                <td class="align-middle">{{$item->venue}}</td>
+                                <td class="align-middle">{{$item->startdate}}</td>
+                                <td class="align-middle">{{$item->endate}}</td>
+                                <td class="align-middle">
+                                    <a href="#"  class="btn text-theme p-1 " data-toggle="modal" data-target='#eventUpdate{{ $item->id }}'><i class="fas fa-edit"></i></a>
+                                    <a href="/delete-event/{{ $item->id }}" class="btn btn-link text-danger p-1"><i class="fas fa-trash"></i></a>
+                                </td>
                             </tr>
+                            <div class="modal fade" id="eventUpdate{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Update Event!</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form class="form-horizontal mt-4 mb-5" method="POST" action="/edit-event/{{ $item->id }}" enctype="multipart/form-data">
+                                            @csrf
+                                            {{ method_field('PUT') }}
+                                            <div class="modal-body">
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-2" for="eventName">Title</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" name="eventName" value="{{$item->eventName}}"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-2" for="venue">Event Venue</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" name="venue" value="{{$item->venue}}"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row ">
+                                                    <div class="form-group col-sm-2">
+                                                    </div>
+                                                    <div class="form-group col-sm-5">
+                                                        <label class="control-label col-sm-4" for="startdate">Start Date</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="date" class="form-control" name="startdate" value="{{$item->startdate}}" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-5">
+                                                        <label class="control-label col-sm-4" for="endate">End Date</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="date" class="form-control" name="endate" value="{{$item->endate}}" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-2" for="eventDesc">Event Description</label>
+                                                    <div class="col-sm-10">
+                                                        <textarea type="text" class = "form-control" rows = "3" name="eventDesc" >{{$item->eventDesc}}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary" >Save</button>
+                                            </div>
+                                        </form> 
+                                    </div>
+                                </div>
+                            </div>
                         @endforeach       
                     @endif
                 </tbody>
             </table>
         </div>
         <!--/Striped table-->
+         <!--/Striped table-->
+         <div class="modal fade" id="eventAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Add Event</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form class="form-horizontal mt-4 mb-5" method="POST" action="/post-event" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <label class="control-label col-sm-2" for="eventName">Title</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="eventName" placeholder="Event Title" required/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-sm-2" for="venue">Event Venue</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="venue" placeholder="Venue" required/>
+                                </div>
+                            </div>
+                            <div class="form-row ">
+                                <div class="form-group col-sm-2">
+                                </div>
+                                <div class="form-group col-sm-5">
+                                    <label class="control-label col-sm-4" for="startdate">Start Date</label>
+                                    <div class="col-sm-10">
+                                        <input type="date" class="form-control" name="startdate" placeholder="18/01/2021" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-5">
+                                    <label class="control-label col-sm-4" for="endate">End Date</label>
+                                    <div class="col-sm-10">
+                                        <input type="date" class="form-control" name="endate" placeholder="22/01/2021" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-sm-2" for="eventDesc">Event Description</label>
+                                <div class="col-sm-10">
+                                    <textarea type="text" class = "form-control" rows = "3" name="eventDesc" placeholder = "Event Description" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" >Save</button>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

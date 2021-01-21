@@ -67,12 +67,11 @@
 
             <!--Search box and avatar-->
             <div class="col-sm-8 col-4 text-right flex-header-menu justify-content-end">
-                <div class="search-rounded mr-3">
-                    <input type="text" class="form-control search-box" placeholder="Search....." />
-                </div>
+                
                 <div class="mr-4">
                     <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{asset('admin/img/profile.jpg')}}" alt="profile" class="rounded-circle" width="40px" height="40px">
+                        <i class="fas fa-user-cog rounded-circle"  style="color: blue; font-size: 200%"></i>
+                       
                     </a>
                     <div class="dropdown-menu dropdown-menu-right mt-13" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="/userprofile"><i class="fa fa-user pr-2"></i> Account</a>

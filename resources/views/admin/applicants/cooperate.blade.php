@@ -24,14 +24,14 @@
                         @if(count($cooperate)>0)
                             @foreach ($cooperate as $item)
                             <tr>
-                                <td>{{$item->orgName}}/td>
-                                <td>{{$item->title}}/td>
-                                <td>{{$item->noOfstaff}}/td>
-                                <td>{{$item->interest}}/td>
-                                <td>{{$item->doApp}}/td>
-                                <td>{{$item->dapproved}}/td>
+                                <td>{{$item->orgName}}</td>
+                                <td>{{$item->title}}</td>
+                                <td>{{$item->noOfstaff}}</td>
+                                <td>{{$item->interest}}</td>
+                                <td>{{$item->doApp}}</td>
+                                <td>{{$item->dapproved}}</td>
                                 <td><label class="badge badge-danger badge-pill">{{$item->approve}}</label></td>
-                                <td>Detail<</td>
+                                <td>Detail</td>
                             </tr>
                             @endforeach
                         @endif()

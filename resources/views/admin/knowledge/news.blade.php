@@ -20,7 +20,7 @@
             </div>
             
             
-            <table class="table table-striped" id="project_table">
+            <table class="table table-striped" id="theDataTable">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -41,10 +41,55 @@
                                 <td class="align-middle">{{$item->newsDesc}}</td>
                                 <td class="align-middle"><img src="{{ asset('uploads/news/'.$item ->image)}}" width="80" alt="Image"></td>
                                 <td class="align-middle text-center">
-                                    <a href ="#"  class="btn text-theme p-1 edit"><i class="fas fa-edit"></i></i></a>
+                                    <a href="#"  class="btn text-theme p-1 " data-toggle="modal" data-target='#newsUpdate{{ $item->id }}'><i class="fas fa-edit"></i></a>
                                     <button class="btn btn-link text-danger p-1"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
+                            <div class="modal fade" id="newsUpdate{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">News Update</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form class="form-horizontal mt-4 mb-5" method="POST" action="/edit-news/{{ $item->id }}" enctype="multipart/form-data">
+                                            @csrf
+                                            {{ method_field('PUT') }}
+                                            <div class="modal-body">
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-2" for="newsTitle">Title</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" name="newsTitle" value="{{$item->newsTitle}}"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-2" for="newsCategory">News Category</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" name="newsCategory" value="{{$item->newsCategory}}"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-2" for="newsDesc">Description</label>
+                                                    <div class="col-sm-10">
+                                                        <textarea type="text" class = "form-control" rows = "3" name="newsDesc" >{{$item->newsDesc}}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" >
+                                                    <img src="{{ asset('uploads/news/'.$item ->image)}}" width="60" alt=" Image" >
+                                                    <br></br>
+                                                    <input type="file" name="image" class="form-control-file ">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary" >Save</button>
+                                            </div>
+                                        </form> 
+                                    </div>
+                                </div>
+                            </div>
                         @endforeach       
                     @endif
                 </tbody>
@@ -79,7 +124,7 @@
                             <div class="form-group row">
                                 <label class="control-label col-sm-2" for="newsDesc">Description</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="newsDesc" placeholder="News Description" required/>
+                                    <textarea type="text" class = "form-control" rows = "3" name="newsDesc" placeholder = "News Description" required></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">

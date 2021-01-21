@@ -20,7 +20,7 @@
                 </div>
                 
                 
-                <table class="table table-striped" id="project_table">
+                <table class="table table-striped" id="theDataTable">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -39,10 +39,51 @@
                                     <td class="align-middle">{{$item->description}}</td>
                                     <td class="align-middle">{{$item->document}}</td>
                                     <td class="align-middle text-center">
-                                        <a href ="#"  class="btn text-theme p-1 edit"><i class="fas fa-edit"></i></i></a>
-                                        <button class="btn btn-link text-danger p-1"><i class="fas fa-trash"></i></button>
+                                        <a href="#"  class="btn text-theme p-1 " data-toggle="modal" data-target='#knowHubUpdate{{ $item->id }}'><i class="fas fa-edit"></i></a>
+                                        <a href="/delete-knowhub/{{ $item->id }}"  class="btn btn-link text-danger p-1"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
+                                <div class="modal fade" id="knowHubUpdate{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Document Update</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <form class="form-horizontal mt-4 mb-5" method="POST" action="/edit-knowHub/{{ $item->id }}" enctype="multipart/form-data" id="editform">
+                                                @csrf
+                                                {{ method_field('PUT') }}
+                                                <div class="modal-body">
+                                                    <div class="form-group row">
+                                                        <label class="control-label col-sm-2" for="title">Title</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" name="title" id="title" value="{{$item->title}}" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="control-label col-sm-2" for="description">Description</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" name="description" id="description" value="{{$item->description}}" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="control-label col-sm-2" for="document">Update Document</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="file" class="form-control"  name="document" value="{{$item->document}}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Save</button>
+                                                </div>
+                                            </form> 
+                                            
+                                        </div>
+                                    </div>
+                                </div>
                             @endforeach       
                         @endif
                     </tbody>
@@ -73,13 +114,12 @@
                                     <label class="control-label col-sm-2" for="description">Description</label>
                                     <div class="col-sm-10">
                                         <textarea type="text" class = "form-control" rows = "3" name="description" placeholder = "Description" required></textarea>
-                                        {{-- <input type="text" class="form-control"  placeholder="Description" required/> --}}
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="control-label col-sm-2" for="document">Upload Document</label>
                                     <div class="col-sm-10">
-                                        <input type="file" class="form-control" name="document">
+                                        <input type="file" class="form-control" name="document" required>
                                     </div>
                                 </div>
                             </div>
